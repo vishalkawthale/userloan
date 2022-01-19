@@ -1,5 +1,5 @@
 package com.user.loan.service;
 
-public class LoanServiceImpl {
+public interface CustomerService {
 
 }
