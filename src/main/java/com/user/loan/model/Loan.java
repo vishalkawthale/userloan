@@ -1,12 +1,15 @@
 package com.user.loan.model;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +31,7 @@ public class Loan {
 	private int loanId;
 	
 	@Column(name = "loan_amount")
-	private long loanAmount;
+	private float loanAmount;
 	
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "trade_date")
@@ -46,9 +49,12 @@ public class Loan {
 	private String paymentFrequency;
 	
 	@Column(name = "interest_rate")
-	private double interestRate;
+	private float interestRate;
 	
 	@ManyToOne()
 	private Customer customer;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loan")
+	private Payment payment;
 
 }
