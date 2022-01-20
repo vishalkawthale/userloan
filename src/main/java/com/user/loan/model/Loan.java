@@ -1,6 +1,7 @@
 package com.user.loan.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "loan_table")
 public class Loan {
 
@@ -54,7 +57,7 @@ public class Loan {
 	@ManyToOne()
 	private Customer customer;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "loan")
-	private Payment payment;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Payment> payment;
 
 }

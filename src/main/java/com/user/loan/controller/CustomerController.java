@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.user.loan.model.Loan;
-import com.user.loan.service.LoanService;
+import com.user.loan.model.Customer;
+import com.user.loan.service.CustomerService;
 
 @RestController
-@RequestMapping("/loan")
-public class LoanController {
+@RequestMapping("/customer")
+public class CustomerController {
 	
 	@Autowired
-	private LoanService loanService;
+	private CustomerService customerService;
 	
-	@PostMapping("/addLoan")
-	public ResponseEntity<Loan> addLoanDetails(@RequestBody Loan loan){
-		Loan addLoan = this.loanService.addLoan(loan);
-		return new ResponseEntity<Loan>(addLoan, HttpStatus.CREATED);
+	@PostMapping("/addCustomer")
+	public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer){
+		Customer addedCustomer = this.customerService.addCustomer(customer);
+		return new ResponseEntity<Customer>(addedCustomer, HttpStatus.CREATED);
+		
 	}
-	
-	
 
 }
